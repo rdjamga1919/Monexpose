@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De Black Mirror au RGPD - Présentation Visuelle</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #f1f5f9;
+            overflow-x: hidden;
+        }
+
+        .slide-container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .slide {
+            width: 100%;
+            max-width: 1200px;
+            height: 600px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-radius: 20px;
+            padding: 4rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid #38bdf8;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .emoji-large {
+            font-size: 6rem;
+            margin-bottom: 2rem;
+        }
+
+        .emoji-medium {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: #38bdf8;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(56, 189, 248, 0.3);
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            color: #38bdf8;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid #38bdf8;
+            padding-bottom: 1rem;
+            text-align: center;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #94a3b8;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .title-slide {
+            text-align: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            width: 100%;
+            margin-top: 2rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            width: 100%;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #0284c7;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            color: #38bdf8;
+            margin-bottom: 1rem;
+        }
+
+        .card-emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            width: 100%;
+            margin-top: 2rem;
+        }
+
+        .timeline-item {
+            background: #1e293b;
+            padding: 1.5rem;
+            border-left: 4px solid #0284c7;
+            border-radius: 5px;
+        }
+
+        .timeline-item strong {
+            color: #38bdf8;
+            font-size: 1.1rem;
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 100;
+        }
+
+        button {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            background: #38bdf8;
+            color: #0f172a;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+        }
+
+        button:hover {
+            background: #0284c7;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
+        }
+
+        button:disabled {
+            background: #64748b;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .slide-counter {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: #38bdf8;
+            color: #0f172a;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+        }
+    </style>
+</head>
+<body>
+<!-- SLIDE 1: TITRE -->
+<div class="slide-container">
+    <div class="slide active title-slide">
+        <div class="emoji-large">🎬</div>
+        <h1>De Black Mirror au RGPD</h1>
+        <p class="subtitle">Droit et numérique : l'implication de l'IA dans le domaine juridique</p>
+    </div>
+</div>
+
+<!-- SLIDE 2: PROBLÉMATIQUE -->
+<div class="slide-container">
+    <div class="slide">
+        <h2>Problématique</h2>
+        <p style="font-size: 2rem; color: #cbd5e1; text-align: center; margin-top: 3rem;">
+            En quoi les scénarios de Black Mirror nous aident-ils à comprendre les enjeux juridiques et économiques actuels ?
+        </p>
+        <div style="margin-top: 3rem; display: flex; gap: 2rem; justify-content: center;">
+            <div style="font-size: 2.5rem;">⚖️</div>
+            <div style="font-size: 2.5rem;">💻</div>
+            <div style="font-size: 2.5rem;">🔒</div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 3: PLAN -->
+<div class="slide-container">
+    <div class="slide">
+        <h2>Plan</h2>
+        <div class="grid-3" style="margin-top: 2rem;">
+            <div class="card">
+                <div class="card-emoji">🤖</div>
+                <h3>I. IA & Décisions</h3>
+            </div>
+            <div class="card">
+                <div class="card-emoji">👁️</div>
+                <h3>II. Surveillance</h3>
+            </div>
+            <div class="card">
+                <div class="card-emoji">⚖️</div>
+                <h3>III. Régulation</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 4: NOSEDIVE -->
+<div class="slide-container">
+    <div class="slide">
+        <div class="emoji-medium">⭐</div>
+        <h2>Nosedive : Notation Sociale</h2>
+        <div class="grid-2" style="margin-top: 2rem;">
+            <div class="card">
+                <h3>Fiction</h3>
+                <p style="font-size: 1.2rem; color: #cbd5e1; margin-top: 1rem;">Note 0-5 étoiles<br>Contrôle accès services</p>
+            </div>
+            <div class="card">
+                <h3>Réalité 2025</h3>
+                <p style="font-size: 1.2rem; color: #cbd5e1; margin-top: 1rem;">Crédit social (Chine)<br>Scoring bancaire (USA/EU)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 5: JOAN IS AWFUL -->
+<div class="slide-container">
+    <div class="slide">
+        <div class="emoji-medium">🎬</div>
+        <h2>Joan Is Awful : IA Générative</h2>
+        <div class="grid-2" style="margin-top: 2rem;">
+            <div class="card">
+                <h3>L'épisode</h3>
+                <p style="font-size: 1.2rem; color: #cbd5e1; margin-top: 1rem;">Netflix crée série<br>À partir des données personnelles</p>
+            </div>
+            <div class="card">
+                <h3>Problème</h3>
+                <p style="font-size: 1.2rem; color: #cbd5e1; margin-top: 1rem;">Consentement dans CGU<br>Droit à l'image violé</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 6: IA JURIDIQUE -->
+<div class="slide-container">
+    <div class="slide">
+        <div class="emoji-medium">⚖️</div>
+        <h2>IA dans le Domaine Juridique</h2>
+        <div class="grid-3" style="margin-top: 2rem;">
+            <div class="card">
+                <h3>Recherche</h3>
+                <p style="font-size: 1rem; color: #cbd5e1; margin-top: 1rem;">Analyse milliers jugements</p>
+            </div>
+            <div class="card">
+                <h3>Prédiction</h3>
+                <p style="font-size: 1rem; color: #cbd5e1; margin-top: 1rem;">Justice prédictive</p>
+            </div>
+            <div class="card">
+                <h3>Contrats</h3>
+                <p style="font-size: 1rem; color: #cbd5e1; margin-top: 1rem;">Analyse automatisée</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 7: CYBERCRIMINALITÉ -->
+<div class="slide-container">
+    <div class="slide">
+        <div class="emoji-medium">🔓</div>
+        <h2>Shut Up and Dance : Cybercriminalité</h2>
+        <div class="grid-2" style="margin-top: 2rem;">
+            <div class="card">
+                <h3>La menace</h3>
+                <p style="font-size: 1.2rem; color: #cbd5e1; margin-top: 1rem;">Malware + Webcam piratée<br>Sextorsion</p>
+            </div>
+            <div class="card">
+                <h3>Réalité</h3>
+                <p style="font-size: 1.2rem; color: #cbd5e1; margin-top: 1rem;">12 000 signalements/an (FR)<br>Dark web data breach</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 8: GAFAM & MINEURS -->
+<div class="slide-container">
+    <div class="slide">
+        <div class="emoji-medium">📱</div>
+        <h2>Smithereens & Arkangel</h2>
+        <div style="margin-top: 2rem;">
+            <div class="card">
+                <h3>GAFAM : Données Massives</h3>
+                <p style="font-size: 1.1rem; color: #cbd5e1; margin-top: 1rem;">Google, Amazon, Facebook, Apple, Microsoft<br>+ YouTube, TikTok, X (2024)<br>Mieux informés que gouvernements</p>
+            </div>
+            <div class="card" style="margin-top: 1.5rem;">
+                <h3>Arkangel : Surveillance Enfant</h3>
+                <p style="font-size: 1.1rem; color: #cbd5e1; margin-top: 1rem;">Puce implantée 24/7<br>Données mineurs = ultra-protégées (RGPD art.8)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 9: RECONNAISSANCE FACIALE -->
+<div class="slide-container">
+    <div class="slide">
+        <div class="emoji-medium">👁️</div>
+        <h2>Reconnaissance Faciale</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <strong>🇬🇧 Londres 2024-2025</strong><br>
+                Metropolitan Police Live Facial Recognition
+            </div>
+            <div class="timeline-item">
+                <strong>🐦 X/Twitter 2025</strong><br>
+                Vérification d'âge par selfie IA
+            </div>
+            <div class="timeline-item">
+                <strong>📹 Caméras partout</strong><br>
+                Surveillance de masse → atteinte vie privée
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 10: CADRE JURIDIQUE -->
+<div class="slide-container">
+    <div class="slide">
+        <div class="emoji-medium">⚖️</div>
+        <h2>Régulation Européenne</h2>
+        <div class="grid-2" style="margin-top: 1.5rem;">
+            <div class="card">
+                <h3>RGPD (2018)</h3>
+                <p style="font-size: 0.95rem; color: #cbd5e1; margin-top: 1rem;">Minimisation<br>Transparence<br>Sécurité<br>Droits (accès, suppression)</p>
+            </div>
+            <div class="card">
+                <h3>AI Act (2024)</h3>
+                <p style="font-size: 0.95rem; color: #cbd5e1; margin-top: 1rem;">INTERDIT : score social<br>TRÈS HAUT RISQUE : justice<br>LIMITÉ : IA générative<br>MINIMAL : peu contraintes</p>
+            </div>
+            <div class="card">
+                <h3>CNIL</h3>
+                <p style="font-size: 0.95rem; color: #cbd5e1; margin-top: 1rem;">Autorité française<br>Amendes : 20M€ ou 4% CA<br>Notification 72h (fuite)</p>
+            </div>
+            <div class="card">
+                <h3>DSA (2024)</h3>
+                <p style="font-size: 0.95rem; color: #cbd5e1; margin-top: 1rem;">Régule GAFAM<br>Contenus illicites<br>Protection mineurs</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 11: RÔLE DEV SLAM -->
+<div class="slide-container">
+    <div class="slide">
+        <div class="emoji-medium">💻</div>
+        <h2>Ton Rôle : Dev SLAM</h2>
+        <div class="grid-2" style="margin-top: 2rem;">
+            <div class="card">
+                <h3>Privacy by Design</h3>
+                <p style="font-size: 1rem; color: #cbd5e1; margin-top: 1rem;">Minimisation données<br>Anonymisation<br>Chiffrement</p>
+            </div>
+            <div class="card">
+                <h3>Security by Design</h3>
+                <p style="font-size: 1rem; color: #cbd5e1; margin-top: 1rem;">Pas mdp en clair<br>Transferts chiffrés<br>Droits d'accès strict</p>
+            </div>
+        </div>
+        <div style="margin-top: 1.5rem; text-align: center; color: #38bdf8; font-size: 1.2rem;">
+            ❓ Questions Black Mirror ?
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 12: CONCLUSION -->
+<div class="slide-container">
+    <div class="slide">
+        <h2>Conclusion</h2>
+        <div class="grid-3" style="margin-top: 2rem;">
+            <div class="card">
+                <h3>Black Mirror</h3>
+                <p style="font-size: 1rem; color: #cbd5e1; margin-top: 1rem;">Fiction qui ressemble à la réalité</p>
+            </div>
+            <div class="card">
+                <h3>Droit qui Essaie</h3>
+                <p style="font-size: 1rem; color: #cbd5e1; margin-top: 1rem;">RGPD + AI Act + CNIL<br>Imparfait mais direction</p>
+            </div>
+            <div class="card">
+                <h3>Ton Éthique</h3>
+                <p style="font-size: 1rem; color: #cbd5e1; margin-top: 1rem;">Coder responsable<br>Pas juste "le boss a dit"</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CONTROLS -->
+<div class="controls">
+    <button id="prevBtn" onclick="changeSlide(-1)">← Précédent</button>
+    <button id="nextBtn" onclick="changeSlide(1)">Suivant →</button>
+</div>
+
+<div class="slide-counter">
+    <span id="slideNum">1</span> / <span id="totalSlides">12</span>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    function showSlide(n) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (n + totalSlides) % totalSlides;
+        slides[currentSlide].classList.add('active');
+        document.getElementById('slideNum').textContent = currentSlide + 1;
+        document.getElementById('totalSlides').textContent = totalSlides;
+
+        document.getElementById('prevBtn').disabled = currentSlide === 0;
+        document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+    }
+
+    function changeSlide(direction) {
+        showSlide(currentSlide + direction);
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') changeSlide(-1);
+        if (e.key === 'ArrowRight') changeSlide(1);
+    });
+
+    showSlide(0);
+</script>
+</body>
+</html>

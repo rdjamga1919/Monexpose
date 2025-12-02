@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>De Black Mirror au RGPD - Présentation Visuelle</title>
+    <title>La propagande en temps de paix</title>
     <style>
         * {
             margin: 0;
@@ -13,426 +13,303 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #f1f5f9;
-            overflow-x: hidden;
+            background: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
         }
 
         .slide-container {
             width: 100%;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
+            max-width: 960px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
         }
 
         .slide {
-            width: 100%;
-            max-width: 1200px;
-            height: 600px;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            border-radius: 20px;
-            padding: 4rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            border: 1px solid #38bdf8;
             display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.8s ease-in;
+            padding: 60px 40px;
+            min-height: 600px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-size: 18px;
+            line-height: 1.8;
+            animation: fadeIn 0.5s;
         }
 
         .slide.active {
             display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        .emoji-large {
-            font-size: 6rem;
-            margin-bottom: 2rem;
+        .slide h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: bold;
         }
 
-        .emoji-medium {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
+        .slide h2 {
+            font-size: 40px;
+            margin-bottom: 30px;
+            font-weight: bold;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 15px;
         }
 
-        h1 {
-            font-size: 3.5rem;
-            color: #38bdf8;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 10px rgba(56, 189, 248, 0.3);
-            text-align: center;
+        .slide ul {
+            list-style: none;
+            margin-left: 0;
         }
 
-        h2 {
-            font-size: 2.8rem;
-            color: #38bdf8;
-            margin-bottom: 2rem;
-            border-bottom: 3px solid #38bdf8;
-            padding-bottom: 1rem;
-            text-align: center;
+        .slide li {
+            margin: 15px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 20px;
         }
 
-        .subtitle {
-            font-size: 1.5rem;
-            color: #94a3b8;
-            text-align: center;
-            margin-top: 1.5rem;
+        .slide li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: #ffd700;
         }
 
-        .title-slide {
-            text-align: center;
+        .slide p {
+            margin: 15px 0;
+            font-size: 20px;
         }
 
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            width: 100%;
-            margin-top: 2rem;
+        .slide em {
+            font-style: italic;
+            color: #ffd700;
         }
 
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            width: 100%;
-            margin-top: 2rem;
+        .slide strong {
+            font-weight: bold;
+            color: #ffd700;
         }
 
-        .card {
-            background: #1e293b;
-            padding: 2rem;
-            border-radius: 10px;
-            border-left: 4px solid #0284c7;
-            text-align: center;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
-            color: #38bdf8;
-            margin-bottom: 1rem;
-        }
-
-        .card-emoji {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            width: 100%;
-            margin-top: 2rem;
-        }
-
-        .timeline-item {
-            background: #1e293b;
-            padding: 1.5rem;
-            border-left: 4px solid #0284c7;
-            border-radius: 5px;
-        }
-
-        .timeline-item strong {
-            color: #38bdf8;
-            font-size: 1.1rem;
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            font-size: 18px;
+            opacity: 0.7;
         }
 
         .controls {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
             display: flex;
-            gap: 1rem;
-            z-index: 100;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: #333;
+            color: white;
         }
 
         button {
-            padding: 0.8rem 1.5rem;
-            font-size: 1rem;
-            background: #38bdf8;
-            color: #0f172a;
+            background: #667eea;
+            color: white;
             border: none;
-            border-radius: 8px;
+            padding: 10px 20px;
+            border-radius: 5px;
             cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+            font-size: 16px;
+            transition: background 0.3s;
         }
 
         button:hover {
-            background: #0284c7;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
+            background: #764ba2;
         }
 
         button:disabled {
-            background: #64748b;
+            background: #999;
             cursor: not-allowed;
-            opacity: 0.5;
         }
 
-        .slide-counter {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            background: #38bdf8;
-            color: #0f172a;
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
+        .progress-bar {
+            flex: 1;
+            margin: 0 20px;
+            background: #555;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #667eea;
+            transition: width 0.3s;
+        }
+
+        .slide-title {
+            font-size: 24px;
+            text-align: center;
+            color: white;
+        }
+
+        .video-container {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            border-left: 4px solid #ffd700;
+        }
+
+        .video-link {
+            color: #ffd700;
+            text-decoration: underline;
+            cursor: pointer;
             font-weight: bold;
-            font-size: 1rem;
-            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
         }
     </style>
 </head>
 <body>
-<!-- SLIDE 1: TITRE -->
 <div class="slide-container">
-    <div class="slide active title-slide">
-        <div class="emoji-large">🎬</div>
-        <h1>De Black Mirror au RGPD</h1>
-        <p class="subtitle">Droit et numérique : l'implication de l'IA dans le domaine juridique</p>
-    </div>
-</div>
-
-<!-- SLIDE 2: PROBLÉMATIQUE -->
-<div class="slide-container">
-    <div class="slide">
-        <h2>Problématique</h2>
-        <p style="font-size: 2rem; color: #cbd5e1; text-align: center; margin-top: 3rem;">
-            En quoi les scénarios de Black Mirror nous aident-ils à comprendre les enjeux juridiques et économiques actuels ?
+    <!-- Slide 1: Titre -->
+    <div class="slide active">
+        <h1 style="text-align: center; font-size: 56px;">La propagande en temps de paix</h1>
+        <p style="text-align: center; font-size: 24px; margin-top: 40px; color: #ffd700;">Comment la propagande façonne-t-elle nos pensées et nos comportements même en temps de paix ?</p>
+        <p style="text-align: center; font-size: 20px; margin-top: 80px; opacity: 0.8;">
+            <em>Exposé oral – BTS SIO - Rosie Djamga</em>
         </p>
-        <div style="margin-top: 3rem; display: flex; gap: 2rem; justify-content: center;">
-            <div style="font-size: 2.5rem;">⚖️</div>
-            <div style="font-size: 2.5rem;">💻</div>
-            <div style="font-size: 2.5rem;">🔒</div>
-        </div>
+        <div class="slide-number">1 / 9</div>
     </div>
-</div>
 
-<!-- SLIDE 3: PLAN -->
-<div class="slide-container">
+    <!-- Slide 2: Définition / Bernays -->
     <div class="slide">
-        <h2>Plan</h2>
-        <div class="grid-3" style="margin-top: 2rem;">
-            <div class="card">
-                <div class="card-emoji">🤖</div>
-                <h3>I. IA & Décisions</h3>
-            </div>
-            <div class="card">
-                <div class="card-emoji">👁️</div>
-                <h3>II. Surveillance</h3>
-            </div>
-            <div class="card">
-                <div class="card-emoji">⚖️</div>
-                <h3>III. Régulation</h3>
-            </div>
-        </div>
+        <h2>Qu'est-ce que la propagande ?</h2>
+        <ul>
+            <li><strong>Propagande :</strong> ensemble de techniques qui visent à influencer l'opinion publique</li>
+            <li><strong>≠ simple info :</strong> manipulation du consentement</li>
+            <li><strong>Edward Bernays</strong> (1920-30) : père de la propagande moderne</li>
+            <li>En démocratie, on oriente sans forcer : on fait <em>consentir</em></li>
+            <li>Invention : les <strong>relations publiques (PR)</strong> = "propagande acceptable"</li>
+        </ul>
+        <div class="slide-number">2 / 9</div>
     </div>
-</div>
 
-<!-- SLIDE 4: NOSEDIVE -->
-<div class="slide-container">
+    <!-- Slide 3: Problématique / Plan -->
     <div class="slide">
-        <div class="emoji-medium">⭐</div>
-        <h2>Nosedive : Notation Sociale</h2>
-        <div class="grid-2" style="margin-top: 2rem;">
-            <div class="card">
-                <h3>Fiction</h3>
-                <p style="font-size: 1.2rem; color: #cbd5e1; margin-top: 1rem;">Note 0-5 étoiles<br>Contrôle accès services</p>
-            </div>
-            <div class="card">
-                <h3>Réalité 2025</h3>
-                <p style="font-size: 1.2rem; color: #cbd5e1; margin-top: 1rem;">Crédit social (Chine)<br>Scoring bancaire (USA/EU)</p>
-            </div>
-        </div>
+        <h2>Problématique & Plan</h2>
+        <p style="margin-bottom: 30px; font-size: 22px;"><strong>Comment la propagande agit-elle en temps de paix ?</strong></p>
+        <ul>
+            <li><strong>I. </strong>La propagande comme instrument politique</li>
+            <li><strong>II. </strong>La propagande qui impose un modèle de vie unique</li>
+            <li><strong>III. </strong>Quand certaines propagandes s'effondrent face à la vérité</li>
+        </ul>
+        <div class="slide-number">3 / 9</div>
     </div>
-</div>
 
-<!-- SLIDE 5: JOAN IS AWFUL -->
-<div class="slide-container">
+    <!-- Slide 4: Médias et pouvoir -->
     <div class="slide">
-        <div class="emoji-medium">🎬</div>
-        <h2>Joan Is Awful : IA Générative</h2>
-        <div class="grid-2" style="margin-top: 2rem;">
-            <div class="card">
-                <h3>L'épisode</h3>
-                <p style="font-size: 1.2rem; color: #cbd5e1; margin-top: 1rem;">Netflix crée série<br>À partir des données personnelles</p>
-            </div>
-            <div class="card">
-                <h3>Problème</h3>
-                <p style="font-size: 1.2rem; color: #cbd5e1; margin-top: 1rem;">Consentement dans CGU<br>Droit à l'image violé</p>
-            </div>
-        </div>
+        <h2>La propagande en démocratie : médias et influence politique</h2>
+        <ul>
+            <li><strong>Concentration des médias :</strong> quelques milliardaires possèdent tout</li>
+            <li><strong>Ex :</strong> Vincent Bolloré (France), Pierre-Édouard Stérin (droite/extrême-droite)</li>
+            <li><strong>CNews :</strong> gauche la nuit, extrême droite le jour (RSF)</li>
+            <li><strong>TPMP :</strong> condamné pour manque de pluralisme</li>
+            <li><strong>Résultat :</strong> saturation médiatique = pensée unique</li>
+        </ul>
+        <p style="margin-top: 30px; padding-top: 20px; border-top: 2px solid rgba(255, 255, 255, 0.3);"><em>"En démocratie, la propagande étouffe les voix alternatives par saturation médiatique."</em></p>
+        <div class="slide-number">4 / 9</div>
     </div>
-</div>
 
-<!-- SLIDE 6: IA JURIDIQUE -->
-<div class="slide-container">
+    <!-- Slide 5: Propagande et guerre -->
     <div class="slide">
-        <div class="emoji-medium">⚖️</div>
-        <h2>IA dans le Domaine Juridique</h2>
-        <div class="grid-3" style="margin-top: 2rem;">
-            <div class="card">
-                <h3>Recherche</h3>
-                <p style="font-size: 1rem; color: #cbd5e1; margin-top: 1rem;">Analyse milliers jugements</p>
-            </div>
-            <div class="card">
-                <h3>Prédiction</h3>
-                <p style="font-size: 1rem; color: #cbd5e1; margin-top: 1rem;">Justice prédictive</p>
-            </div>
-            <div class="card">
-                <h3>Contrats</h3>
-                <p style="font-size: 1rem; color: #cbd5e1; margin-top: 1rem;">Analyse automatisée</p>
-            </div>
+        <h2>I.2 La propagande comme outil de guerre, même en temps de paix déclaré</h2>
+        <ul>
+            <li><strong>Irak 2003 :</strong> Bush & Blair affirment "armes de destruction massive" → 0 trouvées</li>
+            <li><strong>Golfe 1990-1991 :</strong> témoignage de Nayirah (Koweïtienne) → bébés en couveuse = FAUX</li>
+            <li><strong>Pattern clair :</strong> récit émotionnel → médias → opinion prête à accepter la guerre</li>
+        </ul>
+        <div class="video-container">
+            <p><strong>📹 Vidéo suggérée :</strong></p>
+            <p><span class="video-link">"Nayirah testimony 1990"</span> (YouTube) – extrait du Congrès américain</p>
         </div>
+        <p style="margin-top: 20px; padding-top: 20px; border-top: 2px solid rgba(255, 255, 255, 0.3);"><em>"La propagande prépare les esprits : elle crée le besoin de guerre avant même la guerre."</em></p>
+        <div class="slide-number">5 / 9</div>
     </div>
-</div>
 
-<!-- SLIDE 7: CYBERCRIMINALITÉ -->
-<div class="slide-container">
+    <!-- Slide 6: Guerre froide -->
     <div class="slide">
-        <div class="emoji-medium">🔓</div>
-        <h2>Shut Up and Dance : Cybercriminalité</h2>
-        <div class="grid-2" style="margin-top: 2rem;">
-            <div class="card">
-                <h3>La menace</h3>
-                <p style="font-size: 1.2rem; color: #cbd5e1; margin-top: 1rem;">Malware + Webcam piratée<br>Sextorsion</p>
-            </div>
-            <div class="card">
-                <h3>Réalité</h3>
-                <p style="font-size: 1.2rem; color: #cbd5e1; margin-top: 1rem;">12 000 signalements/an (FR)<br>Dark web data breach</p>
-            </div>
+        <h2>I.3 La propagande comme vecteur idéologique : la Guerre froide</h2>
+        <ul>
+            <li><strong>USA vs URSS :</strong> guerre des récits, déshumanisation de l'ennemi</li>
+            <li><strong>Rocky IV (1985) :</strong> Rocky = humain / Drago = machine soviétique</li>
+            <li><strong>Symboles :</strong> Oncle Sam vs Ours russe (animal, pas humain)</li>
+            <li><strong>Objectif :</strong> l'ennemi devient un monstre → acceptable de le combattre</li>
+        </ul>
+        <div class="video-container">
+            <p><strong>📹 Vidéo suggérée :</strong></p>
+            <p><span class="video-link">Soit : extrait Rocky IV (combat final)</span></p>
+            <p><span class="video-link">Soit : montage propagande URSS/USA</span> (affiches, films)</p>
         </div>
+        <div class="slide-number">6 / 9</div>
     </div>
-</div>
 
-<!-- SLIDE 8: GAFAM & MINEURS -->
-<div class="slide-container">
+    <!-- Slide 7: American Dream -->
     <div class="slide">
-        <div class="emoji-medium">📱</div>
-        <h2>Smithereens & Arkangel</h2>
-        <div style="margin-top: 2rem;">
-            <div class="card">
-                <h3>GAFAM : Données Massives</h3>
-                <p style="font-size: 1.1rem; color: #cbd5e1; margin-top: 1rem;">Google, Amazon, Facebook, Apple, Microsoft<br>+ YouTube, TikTok, X (2024)<br>Mieux informés que gouvernements</p>
-            </div>
-            <div class="card" style="margin-top: 1.5rem;">
-                <h3>Arkangel : Surveillance Enfant</h3>
-                <p style="font-size: 1.1rem; color: #cbd5e1; margin-top: 1rem;">Puce implantée 24/7<br>Données mineurs = ultra-protégées (RGPD art.8)</p>
-            </div>
-        </div>
+        <h2>II. L'American Dream : modèle universel</h2>
+        <ul>
+            <li><strong>Depuis XXᵉ siècle :</strong> USA exporte son modèle de réussite</li>
+            <li><strong>Composants :</strong> maison, voiture, richesse, liberté, consommation</li>
+            <li><strong>Diffusion :</strong> Hollywood, séries, publicités depuis l'enfance</li>
+            <li><strong>En parallèle :</strong> autres pays = terroristes, arriérés, dangereux</li>
+            <li><strong>Résultat :</strong> seul chemin "possible" = occidental capitaliste</li>
+        </ul>
+        <p style="margin-top: 30px; padding-top: 20px; border-top: 2px solid rgba(255, 255, 255, 0.3);"><em>"La propagande vend un mode de vie comme naturel et désirable."</em></p>
+        <div class="slide-number">7 / 9</div>
     </div>
-</div>
 
-<!-- SLIDE 9: RECONNAISSANCE FACIALE -->
-<div class="slide-container">
+    <!-- Slide 8: Réseaux sociaux -->
     <div class="slide">
-        <div class="emoji-medium">👁️</div>
-        <h2>Reconnaissance Faciale</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <strong>🇬🇧 Londres 2024-2025</strong><br>
-                Metropolitan Police Live Facial Recognition
-            </div>
-            <div class="timeline-item">
-                <strong>🐦 X/Twitter 2025</strong><br>
-                Vérification d'âge par selfie IA
-            </div>
-            <div class="timeline-item">
-                <strong>📹 Caméras partout</strong><br>
-                Surveillance de masse → atteinte vie privée
-            </div>
-        </div>
+        <h2>II. Réseaux sociaux : propagande 2.0</h2>
+        <ul>
+            <li><strong>Influenceurs lifestyle :</strong> vie "parfaite" → envie → consommation</li>
+            <li><strong>SkinnyTok :</strong> idéal corporel unique → anorexie, dysmorphie</li>
+            <li><strong>Self-care :</strong> "si tu échoues, c'est ta faute" = invisibilise causes sociales</li>
+            <li><strong>Algorithmes :</strong> bulles, contenus homogènes, même vision du bonheur</li>
+            <li><strong>Objectif :</strong> capter attention, vendre, vendre, vendre</li>
+        </ul>
+        <p style="margin-top: 30px; padding-top: 20px; border-top: 2px solid rgba(255, 255, 255, 0.3);"><em>"Normes de corps, consommation et réussite = imposées via réseaux."</em></p>
+        <div class="slide-number">8 / 9</div>
     </div>
-</div>
 
-<!-- SLIDE 10: CADRE JURIDIQUE -->
-<div class="slide-container">
+    <!-- Slide 9: Conclusion -->
     <div class="slide">
-        <div class="emoji-medium">⚖️</div>
-        <h2>Régulation Européenne</h2>
-        <div class="grid-2" style="margin-top: 1.5rem;">
-            <div class="card">
-                <h3>RGPD (2018)</h3>
-                <p style="font-size: 0.95rem; color: #cbd5e1; margin-top: 1rem;">Minimisation<br>Transparence<br>Sécurité<br>Droits (accès, suppression)</p>
-            </div>
-            <div class="card">
-                <h3>AI Act (2024)</h3>
-                <p style="font-size: 0.95rem; color: #cbd5e1; margin-top: 1rem;">INTERDIT : score social<br>TRÈS HAUT RISQUE : justice<br>LIMITÉ : IA générative<br>MINIMAL : peu contraintes</p>
-            </div>
-            <div class="card">
-                <h3>CNIL</h3>
-                <p style="font-size: 0.95rem; color: #cbd5e1; margin-top: 1rem;">Autorité française<br>Amendes : 20M€ ou 4% CA<br>Notification 72h (fuite)</p>
-            </div>
-            <div class="card">
-                <h3>DSA (2024)</h3>
-                <p style="font-size: 0.95rem; color: #cbd5e1; margin-top: 1rem;">Régule GAFAM<br>Contenus illicites<br>Protection mineurs</p>
-            </div>
-        </div>
+        <h2>Conclusion : propagande démasquée</h2>
+        <ul>
+            <li><strong>Cigarettes (1930-50) :</strong> "bonnes pour la santé" → cancers, addiction</li>
+            <li><strong>Coca-Cola :</strong> "boisson tonique" → obésité, diabète</li>
+            <li><strong>Thalidomide :</strong> "sans danger" → malformations graves</li>
+        </ul>
+        <p style="margin-top: 30px; padding-top: 20px; border-top: 2px solid rgba(255, 255, 255, 0.3); font-size: 22px;"><strong>La vraie question :</strong></p>
+        <p style="font-size: 24px; color: #ffd700; margin-top: 15px;"><em>"Sommes-nous capables de reconnaître la propagande et de garder une pensée critique ?"</em></p>
+        <p style="margin-top: 20px; font-size: 18px;">Parce que la propagande aime quand on ne pose plus de questions.</p>
+        <div class="slide-number">9 / 9</div>
     </div>
-</div>
 
-<!-- SLIDE 11: RÔLE DEV SLAM -->
-<div class="slide-container">
-    <div class="slide">
-        <div class="emoji-medium">💻</div>
-        <h2>Ton Rôle : Dev SLAM</h2>
-        <div class="grid-2" style="margin-top: 2rem;">
-            <div class="card">
-                <h3>Privacy by Design</h3>
-                <p style="font-size: 1rem; color: #cbd5e1; margin-top: 1rem;">Minimisation données<br>Anonymisation<br>Chiffrement</p>
-            </div>
-            <div class="card">
-                <h3>Security by Design</h3>
-                <p style="font-size: 1rem; color: #cbd5e1; margin-top: 1rem;">Pas mdp en clair<br>Transferts chiffrés<br>Droits d'accès strict</p>
-            </div>
+    <!-- Controls -->
+    <div class="controls">
+        <button id="prevBtn" onclick="changeSlide(-1)">← Précédent</button>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
         </div>
-        <div style="margin-top: 1.5rem; text-align: center; color: #38bdf8; font-size: 1.2rem;">
-            ❓ Questions Black Mirror ?
-        </div>
+        <span class="slide-title" id="slideCounter">Slide 1 / 9</span>
+        <button id="nextBtn" onclick="changeSlide(1)">Suivant →</button>
     </div>
-</div>
-
-<!-- SLIDE 12: CONCLUSION -->
-<div class="slide-container">
-    <div class="slide">
-        <h2>Conclusion</h2>
-        <div class="grid-3" style="margin-top: 2rem;">
-            <div class="card">
-                <h3>Black Mirror</h3>
-                <p style="font-size: 1rem; color: #cbd5e1; margin-top: 1rem;">Fiction qui ressemble à la réalité</p>
-            </div>
-            <div class="card">
-                <h3>Droit qui Essaie</h3>
-                <p style="font-size: 1rem; color: #cbd5e1; margin-top: 1rem;">RGPD + AI Act + CNIL<br>Imparfait mais direction</p>
-            </div>
-            <div class="card">
-                <h3>Ton Éthique</h3>
-                <p style="font-size: 1rem; color: #cbd5e1; margin-top: 1rem;">Coder responsable<br>Pas juste "le boss a dit"</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- CONTROLS -->
-<div class="controls">
-    <button id="prevBtn" onclick="changeSlide(-1)">← Précédent</button>
-    <button id="nextBtn" onclick="changeSlide(1)">Suivant →</button>
-</div>
-
-<div class="slide-counter">
-    <span id="slideNum">1</span> / <span id="totalSlides">12</span>
 </div>
 
 <script>
@@ -441,25 +318,30 @@
     const totalSlides = slides.length;
 
     function showSlide(n) {
-        slides[currentSlide].classList.remove('active');
-        currentSlide = (n + totalSlides) % totalSlides;
-        slides[currentSlide].classList.add('active');
-        document.getElementById('slideNum').textContent = currentSlide + 1;
-        document.getElementById('totalSlides').textContent = totalSlides;
+        slides.forEach(slide => slide.classList.remove('active'));
+        slides[n].classList.add('active');
 
-        document.getElementById('prevBtn').disabled = currentSlide === 0;
-        document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        document.getElementById('slideCounter').textContent = `Slide ${n + 1} / ${totalSlides}`;
+        document.getElementById('progressFill').style.width = ((n + 1) / totalSlides * 100) + '%';
+
+        document.getElementById('prevBtn').disabled = n === 0;
+        document.getElementById('nextBtn').disabled = n === totalSlides - 1;
     }
 
     function changeSlide(direction) {
-        showSlide(currentSlide + direction);
+        currentSlide += direction;
+        if (currentSlide >= 0 && currentSlide < totalSlides) {
+            showSlide(currentSlide);
+        }
     }
 
-    document.addEventListener('keydown', (e) => {
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
         if (e.key === 'ArrowLeft') changeSlide(-1);
         if (e.key === 'ArrowRight') changeSlide(1);
     });
 
+    // Initialize
     showSlide(0);
 </script>
 </body>
